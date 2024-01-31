@@ -1,0 +1,103 @@
+.job_card {
+    display: flex;
+    justify-content: space-between;
+    width: 70vw;
+    height: 13vh;
+    box-shadow: 0px 0px 22px 2px rgba(255, 32, 32, 0.25);
+    padding: 0.8rem 1.4rem;
+    font-weight: 500;
+    
+    .job_info {
+        display: flex;
+        gap: 1.2rem;
+
+        .company_logo {
+            img {
+                width: 3rem;
+                height: 3rem;
+            } 
+    
+            div {
+                width: 3rem;
+                height: 3rem;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                color: #FEE;
+                border-radius: 0.5rem;
+                background-color: var(--dark-pink);
+            }
+        }
+
+        >div {
+            display: flex;
+            flex-direction: column;
+            gap: 1.2rem;
+
+            h3, p {
+                margin: 0;
+            }
+
+            h3 {
+                color: #000;
+                font-weight: 700;
+            }
+    
+            div {
+                display: flex;
+                gap: 1.2rem;
+            }
+    
+            div:nth-child(2) {
+                color: #9C9C9C;
+
+                svg {
+                    position: relative;
+                    top: 2px;
+                }
+            }
+    
+            div:nth-child(3) {
+                color: var(--dark-pink);
+                font-size: 0.8rem;
+            }
+        }
+    }
+
+    .skills_and_buttons {
+        align-self: center;
+
+        .skills {
+            display: flex;
+            gap: 0.7rem;
+            margin-bottom: 1.4rem;
+
+            div {
+                background-color: #FEE;
+                min-width: 6rem;
+                height: 1.8rem;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                color: #000;
+            }
+
+            span {
+                color: var(--dark-pink);
+                margin-top: 5px;
+            }
+        }
+
+        .job_buttons {
+            display: flex;
+            gap: 1.5rem;
+            justify-content: flex-end;
+            
+            a {
+                padding: 0.4rem 1rem;
+                text-decoration: none;
+                border-radius: 0.24rem;
+            }
+        }
+    }
+}

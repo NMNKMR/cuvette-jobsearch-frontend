@@ -1,0 +1,27 @@
+.form_wrap {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+
+    .form_container {
+        flex: 1 1;
+        max-height: 100%;
+    }
+
+    .form_poster {
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position-x: center;
+        background-position-y: bottom;
+        width: 40%;
+        height: 100%;
+        text-align: center;
+
+        h3 {
+            padding-top: 1.25rem;
+            font-size: 2rem;
+            font-weight: 500;
+            color: #FFF;
+        }
+    }
+}

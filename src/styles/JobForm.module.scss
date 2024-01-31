@@ -1,0 +1,150 @@
+.job_form {
+    box-sizing: border-box;
+    padding: 3% 0 3% 7%;
+    max-height: 100vh;
+    overflow-y: auto;
+
+    h1 {
+        font-size: 2rem;
+    }
+
+    form {
+        width: 90%;
+        display: flex;
+        flex-direction: column;
+        gap: 1.3rem;
+
+        .job_input {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+
+            input, textarea, .job_select, .skills_select {
+                width: 65%;
+                padding: 0.5rem;
+                font-weight: 500;
+                
+                &::placeholder {
+                    color: #ADADAD;
+                }
+            }
+
+            label {
+                font-size: 1.4rem;
+                font-weight: 500;
+            }
+
+            .job_select {
+                position: relative;
+                height: 2.5rem;
+
+                select {
+                    width: 32%;
+                    height: 100%;
+                    border-radius: 0.5rem;
+                    border: 2px solid #CECECE;
+                    color: #9C9C9C;
+                    text-align: left;
+                    font-size: 1.1rem;
+                    font-weight: 500;
+                    outline: none;
+                    padding-left: 5%;
+                    appearance: none;
+                    position: relative;
+                    right: 0.8rem;
+                    cursor: pointer;
+                }
+    
+                svg {
+                    position: absolute;
+                    left: 24%;
+                    bottom: 35%;
+                    color: #9C9C9C;
+                    pointer-events: none;
+                    cursor: pointer;
+                }
+            }
+        
+            textarea {
+                height: 5rem;
+                border-radius: 0.3125rem;
+                border: 2px solid #C2C2C2;
+                outline: none;
+                font-family: "DM Sans", sans-serif;
+                font-weight: 400;
+                font-size: 1rem;
+            }
+
+            .skills_select {
+                display: flex;
+                align-items: center;
+                gap: 0.5rem;
+                border: 2px solid #C2C2C2;
+                border-radius: 0.3125rem;
+                color: #ADADAD;
+                
+                
+                input {
+                    width: 28%;
+                    height: 90%;
+                }
+
+                .chips {
+                    overflow-x: auto;
+                    width: 95%;
+                    display: flex;
+                    gap: 0.5rem;
+                    
+                    &::-webkit-scrollbar {
+                        display: none;
+                    }
+                    
+                    .skill_chip {
+                        background-color: #FEE;
+                        border-radius: 1rem;
+                        padding: 5px;
+                        display: flex;
+                        justify-content: space-around;
+                        align-items: center;
+                        gap: 5px;
+                        color: var(--dark-pink);
+    
+                        svg {
+                            color: #000;
+                            font-size: 0.85rem;
+                            position: relative;
+                            top: 1px;
+                            cursor: pointer;
+                        }
+                }
+
+                }
+            }
+        }
+
+        .form_buttons {
+            margin-top: 1rem;
+            align-self: flex-end;
+            display: flex;
+            width: 90%;
+            gap: 1rem;
+            justify-content: flex-end;
+
+            button:first-child {
+                background-color: transparent;
+                border: 1.5px solid #CECECE;
+                color: #C2C2C2;
+            }
+
+            button {
+                svg {
+                    position: relative;
+                    top: 2px;
+                    right: 2px;
+                    color: #FFF;
+                }
+            }
+        }
+        
+    }
+}

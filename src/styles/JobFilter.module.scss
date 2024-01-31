@@ -1,0 +1,177 @@
+.filter {
+    box-sizing: border-box;
+    width: 73vw;
+    min-height: 25vh;
+    box-shadow: 0px 0px 22px 4px rgba(255, 32, 32, 0.25);
+    padding: 1.5rem 3rem;
+    margin: 3rem auto;
+
+    .title_search {
+        box-sizing: border-box;
+        width: 100%;
+        border-radius: 0.5rem;
+        display: flex;
+        align-items: center;
+        padding: 0 0.5rem 0 1rem;
+        border: 1.8px solid #E3E3E3;
+
+        svg {
+            height: 1.5rem;
+            width: 1.5rem;
+            color: #9C9C9C;
+        }
+        
+        input {
+            width: 100%;
+            font-weight: 500;
+            border: none;
+            color: #9C9C9C;
+            font-size: 1.2rem;
+
+            &::placeholder {
+                color: #9C9C9C;
+            }
+            
+            &[type="search"]::-webkit-search-cancel-button,
+            [type="search"]::-webkit-search-decoration {
+                -webkit-appearance: none;
+                appearance: none;
+            }
+        }
+        
+        
+        span {
+            height: 90%;
+            border: 1.8px solid #E3E3E3;
+            padding: 8px;
+            border-radius: 0.5rem;
+            color: #9C9C9C;
+            font-weight: 500;
+            font-size: 1.2rem;
+        }
+    }
+
+    .title_search + div {
+        margin: 2rem 0;
+        display: flex;
+        gap: 4rem;
+        justify-content: space-between;
+
+        .skills_filter {
+            flex: 1 1;
+            display: flex;
+            gap: 2rem;
+
+            .skills_select {
+                position: relative;
+                width: 8.5rem;
+                height: 2.5rem;
+
+                select {
+                    width: 100%;
+                    height: 100%;
+                    border-radius: 0.5rem;
+                    border: 2px solid #CECECE;
+                    color: #9C9C9C;
+                    text-align: left;
+                    font-size: 1.1rem;
+                    font-weight: 500;
+                    outline: none;
+                    padding: 0 30% 0 20%;
+                    appearance: none;
+                    cursor: pointer;
+                }
+    
+                svg {
+                    position: absolute;
+                    left: 72%;
+                    bottom: 25%;
+                    color: #9C9C9C;
+                    pointer-events: none;
+                    cursor: pointer;
+                }
+            }
+            
+    
+            >div {
+                width: 100%;
+                display: flex;
+                flex-direction: column;
+                gap: 1.2rem;
+                font-weight: 500;
+
+                .selected_skills {
+                    display: flex;
+                    gap: 1rem;
+                    flex-wrap: wrap;
+
+                    .skill {
+                        display: flex;
+
+                        span {
+                            height: 2.2rem; 
+                            display: flex;
+                            justify-content: center;
+                            align-items: center;
+                        }
+                        
+                        span:first-child {
+                            width: 5.8rem;
+                            background-color: #FEE;
+            
+                        }
+            
+                        span:nth-child(2) {
+                            background-color: var(--dark-pink);
+                            color: #FFF;
+                            font-size: 1.2rem;
+                            width: 1.8rem;
+                            cursor: pointer;
+                        }
+                    }
+                    
+                }
+
+                .selected_skills + div {
+                    display: flex;
+                    gap: 1rem;
+                    justify-content: flex-start;
+                    
+                    span, button {
+                        font-size: 1rem;
+                        color: var(--dark-pink);
+                        cursor: pointer;
+                    }
+
+                    span {
+
+                        button {
+                            background-color: transparent;
+                            border: none;
+
+                            &:disabled {
+                                opacity: 0.5;
+                            }
+                        }
+                    }
+                }
+
+            }
+        }
+
+        .addjob_button {
+            width: 18%;
+
+            button {
+                width: 100%;
+
+                svg {
+                    color: #FFF;
+                    position: relative;
+                    top: 1px;
+                }
+            }
+        }
+    }
+
+}

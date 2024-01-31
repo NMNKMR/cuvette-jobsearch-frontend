@@ -1,0 +1,50 @@
+.auth_form {
+    padding: 15% 0 0 10%;
+
+    h1 {
+        margin-bottom: 0;
+        font-size: 2rem;
+    }
+
+    p {
+        margin-top: 0.5rem;
+    }
+
+    form {
+        margin-top: 2.5rem;
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+
+        input:not([type="checkbox"]) {
+            width: 60%;
+        }
+
+        label {
+            font-size: 1rem;
+            margin-left: 0.4rem;
+        }
+
+        button {
+            margin-top: 1.3rem;
+            margin-bottom: 0.5rem;
+        }
+    }
+
+    p, span {
+        color: #525252;
+        font-size: 1.15rem;
+        font-weight: 500;
+    }
+
+    span {
+        margin-top: 0.5rem;
+        display: flex;
+        align-items: center;
+    }
+
+    a {
+        margin-left: 0.5rem;
+        color: #000;
+    }
+}
