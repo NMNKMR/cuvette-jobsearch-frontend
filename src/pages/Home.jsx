@@ -8,6 +8,7 @@ import { useAuth } from '../context/userContext';
 
 function Home() {
     const [jobs, setJobs] = useState([]);
+    const [loading, setLoading] = useState(true);
     const [title, setTitle] = useState("");
     const [skills, setSkills] = useState([]);
     const applyRef = useRef();
@@ -19,10 +20,15 @@ function Home() {
     }, [skills])
 
     const fetchJobs = async ()=> {
+      setLoading(true);
+      try {
         const {data: jobsData, error} = await getJobsByFilter({title, skills});
         if(!error) {
             setJobs(jobsData);
         }
+      } finally {
+        setLoading(false);
+      }
     }
 
     const findMatchSkills = useCallback((jobSkills)=> {
@@ -56,26 +62,32 @@ function Home() {
       <Nav />
       <main className={`${styles.home}`}>
         <JobFilter
-            user={user}
-            addSkill={addSkill}
-            removeSkill={removeSkill}
-            clearSkills={clearSkills}
-            title={title}
-            updateTitle={(value)=> setTitle(value)}
-            applyRef={applyRef}
-            skills={skills}
-            fetchJobs={fetchJobs}
+          user={user}
+          addSkill={addSkill}
+          removeSkill={removeSkill}
+          clearSkills={clearSkills}
+          title={title}
+          updateTitle={(value) => setTitle(value)}
+          applyRef={applyRef}
+          skills={skills}
+          fetchJobs={fetchJobs}
         />
         <section>
-          {jobs.length? jobs.map((job) => (
-            <JobCard
-              key={job._id}
-              {...job}
-              {...findMatchSkills(job.skillsRequired)}
-              jobId={job._id}
-              user={user}
-            />
-          )) : <h1>No jobs results found</h1>}
+          {loading ? (
+            <h1>fetching jobs...</h1>
+          ) : jobs.length ? (
+            jobs.map((job) => (
+              <JobCard
+                key={job._id}
+                {...job}
+                {...findMatchSkills(job.skillsRequired)}
+                jobId={job._id}
+                user={user}
+              />
+            ))
+          ) : (
+            <h1>Didn't found any relevant jobs</h1>
+          )}
         </section>
       </main>
     </>
