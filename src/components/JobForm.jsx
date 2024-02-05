@@ -26,6 +26,7 @@ function JobForm({ job }) {
   });
 
   const [skillRequired, setSkillRequired] = useState("");
+  const [jobSubmitted, setJobSubmitted] = useState(false);
   const navigate = useNavigate();
 
   const handleInputChange = (e) => {
@@ -46,14 +47,19 @@ function JobForm({ job }) {
   const handleSkillKeyDown = (e)=> {
     if(e.key==="Enter" && skillRequired.trim()!=="") {
         e.preventDefault();
-        addSkillsRequired(skillRequired);
+        if(inputs.skillsRequired.map((skill)=> skill.toLowerCase()).includes(skillRequired.toLowerCase())) {
+          notifyError("Skill already added!");
+          return;
+        } 
+        const skill = JOB_SKILLS.find((skill)=> skill.toLowerCase() === skillRequired.toLowerCase())
+        skill ? addSkillsRequired(skill) : addSkillsRequired(skillRequired);
         setSkillRequired("");
     }
   }
 
   const handleSkillChange = (e)=> {
     const {value} = e.target;
-    if(JOB_SKILLS.includes(value)){
+    if(JOB_SKILLS.includes(value) && !inputs.skillsRequired.includes(value)){
         addSkillsRequired(value);
         setSkillRequired("");
         return;
@@ -71,6 +77,7 @@ function JobForm({ job }) {
 
   const handleJobSubmit = async(e) => {
     e.preventDefault();
+    setJobSubmitted(true);
     
     const missingField = [
       "company",
@@ -83,11 +90,13 @@ function JobForm({ job }) {
     
     if(missingField) {
         notifyError(`${missingField==="title"? "Job Position" : missingField} is required!`);
+        setJobSubmitted(false);
         return;
     }
     
     if(!inputs.skillsRequired.length) {
         notifyError(`Skills are required!`);
+        setJobSubmitted(false);
         return;
     }
 
@@ -98,6 +107,7 @@ function JobForm({ job }) {
 
     if(error) {
         notifyError(error)
+        setJobSubmitted(false);
     } else {
         !job?._id ? notifySuccess("New Job Created Successfully!") : notifySuccess("Job Post Updated Successfully!");
         setTimeout(()=> {
@@ -206,13 +216,13 @@ function JobForm({ job }) {
             />
           </div>
           <div className={`${styles.form_buttons}`}>
-            <Button onClick={()=> navigate(-1)}>Cancel</Button>
+            <Button onClick={()=> navigate(-1)} disabled={jobSubmitted}>Cancel</Button>
             {!job?._id ? (
-              <Button type="submit">
+              <Button type="submit" disabled={jobSubmitted}>
                 <FaPlus /> Add Job
               </Button>
             ) : (
-              <Button type="submit">
+              <Button type="submit" disabled={jobSubmitted}>
                 <FaPencil /> Edit Job
               </Button>
             )}
